@@ -6,7 +6,7 @@
 #每当有新的element进入，判断是否老的element需要弹出了（<=new 就需要弹出）
 #同时，index如果<i-k+1也需要弹出
 from collections import deque
-
+#找到每个滑动窗口（长度w）的最大值
 def find_max_sliding_window(nums, w):
 
     result = []
