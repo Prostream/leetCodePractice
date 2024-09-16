@@ -1,4 +1,5 @@
 #找一个str里最长的无重复字符的字串
+#leetcode-3
 #"aasdsssssbcccccdaa"--->3 asd sbc cda
 def longest_no_rep_substr(str):
     #用i结尾的最长的滑动窗口是，做边界=MAX（左边界，重复字符位置+1）
