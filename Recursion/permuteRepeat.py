@@ -1,4 +1,4 @@
-#leetcode-46 全排列
+#leetcode-47 全排列去重
 #O(n*n!)
 class Solution:
     def arrange(self, nums):
@@ -14,11 +14,15 @@ class Solution:
         if i == len(nums):
             set_str.add(tuple(nums))
         else:
+            set_j = set()
             for j in range(i, len(nums)):
-                nums[i], nums[j] = nums[j], nums[i]
-                self.f(nums, i + 1, set_str)
-                nums[i], nums[j] = nums[j], nums[i]
+                #j位置的输没有来到过i位置，才做尝试
+                while nums[j] not in set_j:
+                    set_j.add(nums[j])
+                    nums[i], nums[j] = nums[j], nums[i]
+                    self.f(nums, i + 1, set_str)
+                    nums[i], nums[j] = nums[j], nums[i]
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.arrange([1, 2, 3]))
+    print(s.arrange([1, 1, 3]))
