@@ -1,0 +1,26 @@
+#104
+#
+class Solution:
+    def longestHeightTree(self, root):
+        if not root:
+            return 0
+        return max(self.longestHeightTree(root.left),self.longestHeightTree(root.right))+1
+
+    def minDepth(self, root):
+        if not root:
+            return 0
+        if not root.left and not root.right:
+            return 1
+        ldepth = float('inf')
+        rdepth = float('inf')
+        if root.left:
+            ldepth = self.minDepth(root.left)
+        if root.right:
+            rdepth = self.minDepth(root.right)
+        return 1 + min(ldepth, rdepth)
+
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
