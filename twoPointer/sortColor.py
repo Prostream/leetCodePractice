@@ -8,7 +8,8 @@ def sort_colors(colors):
     end = n-1
     # start current end
 
-    # 循环比较 c如果是1单纯c进位，是0和s换位，然后s和c都进位，是2则和e换位，单纯e退位（这里的进位退位比较关键，
+    # start=red cur=green end=blue
+    # 循环比较 cur如果是1单纯c进位，是0和start换位，然后start和cur都进位，是2则和end换位，单纯end退位（这里的进位退位比较关键，
     # 但 mid 不动，因为交换过来的元素还没有检查过，可能仍需要进一步处理。）
     # 为什么是<=而不是<呢，因为mid和end交换后，指向同一个位置，这个时候可能还需要把这个数交给start，需要=再跑一次循环才能做完整
     while current <= end:
