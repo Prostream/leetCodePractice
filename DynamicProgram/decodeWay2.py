@@ -147,5 +147,46 @@ class Solution:
                 dp[i] %= (1000000000 + 7)
             return dp[0] % (1000000000 + 7)
 
+        # 空间压缩
+        def f4():
+            n = len(s)
+            cur, next, nextnext = 0, 1, 0
+            for i in range(n - 1, -1, -1):
+                #
+                if s[i] == '0':
+                    cur = 0
+                    continue
+                # 2
+                if s[i] == '*':
+                    cur = 9 * next
+                else:
+                    cur = 1 * next
+                # 3.1
+                if i + 1 <= len(s) - 1:
+                    if s[i] != '*' and s[i + 1] != '*':
+                        if int(s[i] + s[i + 1]) > 26:
+                            cur += 0
+                        else:
+                            cur += 1 * nextnext
+                    # 3.2
+                    elif s[i] == '*' and s[i + 1] != '*':
+                        if s[i + 1] in ['7', '8', '9']:
+                            cur += 1 * nextnext
+                        else:
+                            cur += 2 * nextnext
+                    # 3.3
+                    elif s[i] != '*' and s[i + 1] == '*':
+                        if s[i] == '1':
+                            cur += 9 * nextnext
+                        elif s[i] == '2':
+                            cur += 6 * nextnext
+                        else:
+                            cur += 0
+                    elif s[i] == '*' and s[i + 1] == '*':
+                        cur += 15 * nextnext
+                cur %= (1000000000 + 7)
+            return cur % (1000000000 + 7)
+
+
         # return f1(0)%(1000000000+7)
         return f2()
