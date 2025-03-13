@@ -1,31 +1,18 @@
 #88
-class Solution(object):
+#合并排序数组
+class Solution:
     def merge(self, nums1, m, nums2, n):
-        """
-        :type nums1: List[int]
-        :type m: int
-        :type nums2: List[int]
-        :type n: int
-        :rtype: None Do not return anything, modify nums1 in-place instead.
-        """
-        #3个指针，两个挂在有效数组末尾，一个挂在长数组真实末尾
-        if len(nums1) < len(nums2):
-            nums1, nums2 = nums2, nums1
-            m, n = n, m
-        pointer1 = m - 1
-        pointer2 = n - 1
-        p = len(nums1) - 1
-        while pointer2 >= 0 and pointer1 >= 0:
-            if nums1[pointer1] >= nums2[pointer2]:
-                nums1[p] = nums1[pointer1]
-                pointer1 = pointer1 - 1
-                p -= 1
+        i = 0
+        j = 0
+        merged = []
+        while i < m and j < n:
+            if nums1[i] <= nums2[j]:
+                merged.append(nums1[i])
+                i += 1
             else:
-                nums1[p] = nums2[pointer2]
-                pointer2 = pointer2 - 1
-                p -= 1
-        nums1[:pointer2 + 1] = nums2[:pointer2 + 1]
-        return nums1
+                merged.append(nums2[j])
+                j += 1
 
-if __name__ == '__main__':
-    print(Solution().merge([2,0], 1, [1], 1))
+        merged.append(nums1[i:])
+        merged.extend(nums2[j:])
+        return merged
