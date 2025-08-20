@@ -5,6 +5,8 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+
 def pairSum(self, head: Optional[ListNode]) -> int:
     # 快慢指针找中点
     mid = None
