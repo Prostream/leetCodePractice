@@ -11,3 +11,12 @@ def BFS(graph, start):
                 visited.add(cur)
                 queue.append(cur)
     return
+
+visited = set()
+def DFS(graph, start):
+    if start in visited:
+        return
+    visited.add(start)
+    for nei in graph[start]:
+        DFS(graph, nei)
+
