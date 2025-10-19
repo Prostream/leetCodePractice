@@ -31,4 +31,6 @@ def compute_distance_metrics(arr):
 if __name__ == "__main__":
     arr = [1, 2, 1, 1, 2, 3]
     # 期望输出: [5, 3, 3, 4, 3, 0]
+    # map {[1:0,2,3], [2:1,4], [3:5]}
+    # pre {[x:0,2,5], [x:1,5], [x:5]}
     print(compute_distance_metrics(arr))
